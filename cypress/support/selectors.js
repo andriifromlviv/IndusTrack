@@ -9,5 +9,10 @@ export class PageElements{
     
     invoicesTab = "[routerlink='/invoicesTab']"
 
+    //Invoice
+    addNewInvoiceButton = "[class='btn btn-sm btn-primary m-r-sm ng-star-inserted']"
+    //selectCustomerInput = "[class='form-control customersearchinput ng-untouched ng-pristine ng-valid']"
+    selectCustomerInput = "[type='text']"
+
 
 }
