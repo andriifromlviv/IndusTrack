@@ -33,12 +33,18 @@ describe('Invoice price check', () => {
     //Check, that total sum is zero before adding products
     cy.get("td[style='color: black;']").should('contain', 0)
 
-    cy.get("[placeholder='Type to search']").click()
-    cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(2).click()
+    // // cy.get("[placeholder='Type to search']").click()
+    // // cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(2).click()
 
-    cy.get("[placeholder='Type to search']").click()
-    let a = cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length')
-    console.log(a)
+    // cy.get("[placeholder='Type to search']").click()
+    // //let a = cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").then(elm => elm.length)
+
+    // let a = Cypress.$("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").length
+    // cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(a - 10).click()
+
+    cy.SelectRandomItem()
+    cy.SelectRandomItem()
+
 
   })
 })
