@@ -20,9 +20,11 @@ describe('Invoice price check', () => {
 
     cy.get(sel.invoicesTab).click({ force: true })
     cy.get(sel.addNewInvoiceButton).click()
-    cy.contains(' Search').should('be.visible')
-    cy.get(sel.selectCustomerInput).should('be.visible').and('have.attr', 'placeholder')
-    cy.get(sel.selectCustomerInput)
+    //cy.contains(' Search').should('be.visible')
+    //cy.get(sel.selectCustomerInput).should('be.visible').and('have.attr', 'placeholder')
+
+    cy.InvoicePageLodingVerification()
+    cy.get(sel.selectCustomerInput).type("agape")
 
     //cy.get(sel.invoicesTab).click({ force: true })
     //cy.get(sel.invoicesTab).trigger("click");

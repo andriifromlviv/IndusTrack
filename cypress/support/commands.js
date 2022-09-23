@@ -11,3 +11,9 @@ const {
 
     cy.get("[class='btn btn-primary btn-outline btn-lg active']").should('be.visible')
   })
+
+
+  Cypress.Commands.add('InvoicePageLodingVerification', ()=>{
+    cy.intercept('POST', 'https://m.stripe.com/6').as('InvPageLoad')
+    cy.wait('@InvPageLoad').its('response.statusCode').should('eq', 200)
+  })
