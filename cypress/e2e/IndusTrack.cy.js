@@ -8,25 +8,24 @@ const sel = new PageElements()
 
 describe('Invoice price check', () => {
   
-  
-  it('Login, initial price check', () => {
+  beforeEach(() => {
     
     //Ignore uncaught exceptions
     cy.once('uncaught:exception', () => false);
-    
+    cy.clearLocalStorage()
     cy.visit('/')
+ })
 
+
+  it('Login, initial price check', () => {
+    
     cy.Login(Cypress.env('username'), Cypress.env('password'))
 
-    cy.get(sel.invoicesTab).click({ force: true })
+    cy.get(sel.invoicesTab).click()
     cy.get(sel.addNewInvoiceButton).click()
-    //cy.contains(' Search').should('be.visible')
-    //cy.get(sel.selectCustomerInput).should('be.visible').and('have.attr', 'placeholder')
 
     cy.InvoicePageLodingVerification()
     cy.get(sel.selectCustomerInput).type("agape")
 
-    //cy.get(sel.invoicesTab).click({ force: true })
-    //cy.get(sel.invoicesTab).trigger("click");
   })
 })
