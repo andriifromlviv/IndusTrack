@@ -27,5 +27,8 @@ describe('Invoice price check', () => {
     cy.InvoicePageLodingVerification()
     cy.get(sel.selectCustomerInput).type("agape")
 
+    cy.xpath(sel.agapeMechanical).click()
+    cy.xpath(sel.proceedButton).click()
+
   })
 })
