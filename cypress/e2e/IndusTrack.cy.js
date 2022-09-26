@@ -45,6 +45,17 @@ describe('Invoice price check', () => {
     cy.SelectRandomItem()
     cy.SelectRandomItem()
 
+    cy.contains(sel.actionsButton).click()
+    cy.contains(sel.previewButton).click()
+
+    //cy.get("mat-dialog-container.mat-dialog-container ").scrollTo('bottom')
+
+    cy.get(sel.totalInvoice).scrollIntoView().invoke('text').then((invTotal) => {
+      cy.get(sel.totalPage).invoke('text').should((pageTotal) => {
+        expect(invTotal).to.eq(pageTotal)
+      })
+    })
+
 
   })
 })

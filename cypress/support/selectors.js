@@ -18,5 +18,11 @@ export class PageElements{
 
     confirmModalWindow = "#cdk-overlay-1"
 
+    actionsButton = "Actions"
+    previewButton = "Preview"
+
+    totalPage = ".container-fluid td[style='color: black;']"
+    totalInvoice = ".serviceparts td[style='color: black;']"
+
 
 }
