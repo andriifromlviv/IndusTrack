@@ -16,5 +16,7 @@ export class PageElements{
     agapeMechanical = "//b[text()='Agape Mechanical']"
     proceedButton = "//button[text()='Proceed']"
 
+    confirmModalWindow = "#cdk-overlay-1"
+
 
 }

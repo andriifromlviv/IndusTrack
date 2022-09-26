@@ -14,6 +14,7 @@ const {
     cy.get(sel.passwordInput).clear().type(password)
     cy.get(sel.loginButton).click()
 
+    //custom wait for page loading, to be replaced with api interceipt
     cy.get("[class='btn btn-primary btn-outline btn-lg active']").should('be.visible')
   })
 
@@ -27,9 +28,13 @@ const {
   Cypress.Commands.add('SelectRandomItem', ()=>{
 
     cy.get("[placeholder='Type to search']").click()
-    //number of items in drop down list
-    let a = Cypress.$("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").length
+    
+    cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length').then(elCount =>{
 
-    cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(a)).click()
+      cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount)).click()
+    })
 
+    if (Cypress.$(sel.confirmModalWindow).length > 0) {
+      cy.contains('Yes').click()
+    } 
   })
