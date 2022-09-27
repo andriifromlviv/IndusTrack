@@ -14,8 +14,8 @@ const {
     cy.get(sel.passwordInput).clear().type(password)
     cy.get(sel.loginButton).click()
 
-    //custom wait for page loading, to be replaced with api interceipt
-    cy.get("[class='btn btn-primary btn-outline btn-lg active']").should('be.visible')
+    cy.intercept('POST', 'https://onetrackwebapi.azurewebsites.net/api/AddressBooks/GeoLocate/').as('PageLoad')
+    cy.wait('@PageLoad').its('response.statusCode').should('eq', 200)
   })
 
 
@@ -38,3 +38,10 @@ const {
       cy.contains('Yes').click()
     } 
   })
+
+  Cypress.Commands.add('getIframe', (selector) => {
+    return cy
+        .get(selector)
+        .its('0.contentDocument.body').should('not.be.empty')      
+        .then(cy.wrap)
+    })
