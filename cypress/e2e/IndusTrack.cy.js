@@ -50,12 +50,19 @@ describe('Invoice price check', () => {
 
     //cy.get("mat-dialog-container.mat-dialog-container ").scrollTo('bottom')
 
-    cy.get(sel.totalInvoice).scrollIntoView().invoke('text').then((invTotal) => {
-      cy.get(sel.totalPage).invoke('text').should((pageTotal) => {
-        expect(invTotal).to.eq(pageTotal)
-      })
+    cy.get(sel.totalPage).invoke('text').then((pageTotal) => {
+      cy.get("iframe")
+      .its('0.contentDocument.body').should('not.be.empty')      
+      .then(cy.wrap)
+      .get(sel.totalPage)
+      .invoke('text')
+      .should((invTotal) => {
+        expect(pageTotal).to.eq(invTotal) 
+    
+    
     })
 
 
   })
+})
 })
