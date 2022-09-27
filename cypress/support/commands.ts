@@ -4,5 +4,7 @@ declare namespace Cypress {
         InvoicePageLodingVerification(): Chainable<any>
         SelectRandomItem(): Chainable<any>
         getIframe(selector: any): Chainable<any>
+        setDiscount(percent: any): Chainable<any>
+        selectCustomer(customer: any): Chainable<any>
   }
 }

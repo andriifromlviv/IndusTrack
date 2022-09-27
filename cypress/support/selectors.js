@@ -14,7 +14,7 @@ export class PageElements{
     //selectCustomerInput = "[class='form-control customersearchinput ng-untouched ng-pristine ng-valid']"
     selectCustomerInput = "[type='text']"
     agapeMechanical = "//b[text()='Agape Mechanical']"
-    proceedButton = "//button[text()='Proceed']"
+    proceedButton = ".btn.btn-primary.m-r-sm"
 
     confirmModalWindow = "#cdk-overlay-1"
 

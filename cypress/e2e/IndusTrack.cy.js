@@ -32,15 +32,20 @@ describe('Invoice price check', () => {
 
     cy.InvoicePageLodingVerification()
     cy.get(sel.selectCustomerInput).type("agape")
+ 
 
-    cy.xpath(sel.agapeMechanical).click()
-    cy.xpath(sel.proceedButton).click()
+    cy.selectCustomer("Agape Mechanical")
 
-    //Check, that total sum is zero before adding products
-    cy.get("td[style='color: black;']").should('contain', 0)
+    //cy.xpath(sel.agapeMechanical).click()
+    cy.get(sel.proceedButton).click()
+
+  //   //Check, that total sum is zero before adding products
+    cy.get(sel.totalPage).should('contain', 0)
 
     cy.SelectRandomItem()
     cy.SelectRandomItem()
+
+    cy.setDiscount(10)
 
     cy.contains(sel.actionsButton).click()
     cy.contains(sel.previewButton).click()
