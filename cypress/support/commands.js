@@ -28,7 +28,7 @@ const {
   Cypress.Commands.add('SelectRandomItem', ()=>{
     cy.get("[placeholder='Type to search']").click()   
     cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length').then(elCount =>{
-      cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount)).click()
+      cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount - 1)).click()
     })
 
     if (Cypress.$(sel.confirmModalWindow).length > 0) {
