@@ -26,11 +26,8 @@ const {
 
 
   Cypress.Commands.add('SelectRandomItem', ()=>{
-
-    cy.get("[placeholder='Type to search']").click()
-    
+    cy.get("[placeholder='Type to search']").click()   
     cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length').then(elCount =>{
-
       cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount)).click()
     })
 
@@ -55,12 +52,9 @@ const {
   })
 
   Cypress.Commands.add('selectCustomer', (customer) => {
-   //to be removed
-    cy.wait(2000)
- 
+    cy.wait(2000)   
     cy.get(".customerselect ul").its('children').then((item) => {
       cy.get("li>b").each((el) => {
-        // expect(el.text).to.be.equal(customer)
         if (el.text() == customer)
         cy.get(el).click()
       })

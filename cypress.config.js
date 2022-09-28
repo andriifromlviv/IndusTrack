@@ -7,6 +7,8 @@ module.exports = defineConfig({
     env:{
       username: "jorji@ehtest.com",
       password: "admin",
+      searchCustomer: "agape",
+      selectCustomer: "Agape Mechanical"
     },
     viewportWidth: 1280,
     viewportHeight: 720,
