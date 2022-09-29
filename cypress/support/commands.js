@@ -61,3 +61,27 @@ const {
       })
     })
   })
+
+  Cypress.Commands.add('invoiceActions', (action, discount, discountType) => {
+    cy.contains(sel.actionsButton).click()
+
+    switch (action) {
+
+      case 'Add discount':
+        cy.get(sel.actionsDropDown).contains(action).click()
+        cy.get("[name = 'discountValue']").click().type(discount)
+        cy.get("[name='discountKind']").select(discountType)
+        cy.get('#modalAddDiscount .btn-primary').click()
+        break
+            
+      case 'Preview':
+        cy.get(sel.actionsDropDown).contains(action).click()
+        break
+      
+      case 'Delete':
+        cy.get(sel.actionsDropDown).contains(action).click()
+        cy.get('.mat-dialog-actions button').eq(1).click({forced: true})
+        break
+    }
+
+  })

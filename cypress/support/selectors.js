@@ -19,6 +19,7 @@ export class PageElements{
     confirmModalWindow = "#cdk-overlay-1"
 
     actionsButton = "Actions"
+    actionsDropDown = ".btn-group.pull-right.open > ul  a"
     previewButton = "Preview"
 
     totalPage = ".container-fluid td[style='color: black;']"

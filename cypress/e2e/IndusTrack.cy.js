@@ -17,7 +17,7 @@ describe('IndusTrack tests', () => {
  })
 
 
-  it('Compare total price at the page with price in invoice', () => {
+  it('Compare total price at the page with price in the invoice', () => {
     
     cy.Login(Cypress.env('username'), Cypress.env('password'))
 
@@ -38,7 +38,8 @@ describe('IndusTrack tests', () => {
     cy.SelectRandomItem()
     cy.SelectRandomItem()
 
-    cy.setDiscount(10)
+    //cy.setDiscount(10)
+    cy.invoiceActions('Add discount', 10, '%')
 
     //Preview the invoice
     cy.contains(sel.actionsButton).click()
@@ -53,6 +54,11 @@ describe('IndusTrack tests', () => {
         expect(pageTotal).to.eq(invTotal) 
       })
     })
+
+    //cy.wait(2000)
+    cy.get('.mat-dialog-actions .mat-button-wrapper').should('be.visible').click()
+
+    cy.invoiceActions('Delete')
 
   }) 
 })
