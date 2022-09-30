@@ -10,7 +10,7 @@ const {
     return Math.floor(Math.random() * max);
   }
 
-  Cypress.Commands.add('Login', (username, password) => {
+  Cypress.Commands.add('login', (username, password) => {
     cy.get(sel.userNameInput).clear().type(username)
     cy.get(sel.passwordInput).clear().type(password)
     cy.get(sel.loginButton).should('not.be.disabled').click()

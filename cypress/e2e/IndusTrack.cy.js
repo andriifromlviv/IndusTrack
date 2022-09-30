@@ -16,7 +16,7 @@ describe('IndusTrack tests', () => {
 
   it('Compare total price at the page with price in the invoice', () => {
     
-    cy.Login(Cypress.env('username'), Cypress.env('password'))
+    cy.login(Cypress.env('username'), Cypress.env('password'))
 
     //Create a new invoice
     cy.get(sel.invoicesTab).click()   
