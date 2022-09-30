@@ -13,7 +13,7 @@ const {
   Cypress.Commands.add('Login', (username, password) => {
     cy.get(sel.userNameInput).clear().type(username)
     cy.get(sel.passwordInput).clear().type(password)
-    cy.get(sel.loginButton).click()
+    cy.get(sel.loginButton).should('not.be.disabled').click()
 
     cy.intercept('POST', 'https://onetrackwebapi.azurewebsites.net/api/AddressBooks/GeoLocate/').as('PageLoad')
     cy.wait('@PageLoad').its('response.statusCode').should('eq', 200)
