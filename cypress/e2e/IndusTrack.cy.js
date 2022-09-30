@@ -28,9 +28,8 @@ describe('IndusTrack tests', () => {
     //Check, that total sum is zero before adding products
     cy.get(sel.totalPage).should('contain', 0)
 
-    cy.addRandomItemToInvoice()
-    cy.addRandomItemToInvoice()
-
+    cy.addRandomItemToInvoice(2)
+    
     cy.invoiceActions('Add discount', 10, '%')
 
     cy.invoiceActions('Preview')

@@ -26,7 +26,8 @@ const {
   })
 
 
-  Cypress.Commands.add('addRandomItemToInvoice', ()=>{
+  Cypress.Commands.add('addRandomItemToInvoice', (number)=>{
+    for(var i=0; i<number; i++){
     cy.get(sel.searchField).click()   
     cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length').then(elCount =>{
       cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount - 1)).click()
@@ -35,6 +36,7 @@ const {
     if (Cypress.$(sel.confirmModalWindow).length > 0) {
       cy.contains('Yes').click()
     } 
+  }
   })
 
   Cypress.Commands.add('getIframe', (selector) => {
