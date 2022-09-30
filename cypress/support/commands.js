@@ -26,8 +26,8 @@ const {
   })
 
 
-  Cypress.Commands.add('SelectRandomItem', ()=>{
-    cy.get("[placeholder='Type to search']").click()   
+  Cypress.Commands.add('addRandomItemToInvoice', ()=>{
+    cy.get(sel.searchField).click()   
     cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").its('length').then(elCount =>{
       cy.get("mat-option[class='mat-option mat-focus-indicator ng-star-inserted']").eq(getRandomInt(elCount - 1)).click()
     })
@@ -83,5 +83,10 @@ const {
         cy.get('.mat-dialog-actions button').eq(1).click({forced: true})
         break
     }
+  })
 
+  Cypress.Commands.add('searchAndSelectCustomer', (searchCustomer, selectCustomer) => {
+    cy.get(sel.selectCustomerInput).should('be.visible').type(searchCustomer)
+    cy.selectCustomer(selectCustomer)
+    cy.get(sel.proceedButton).click()
   })

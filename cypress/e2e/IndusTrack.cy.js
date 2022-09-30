@@ -7,15 +7,12 @@ const sel = new PageElements()
 
 describe('IndusTrack tests', () => {
   
-  beforeEach(() => {
-    
+  beforeEach(() => {    
     //Ignore uncaught exceptions
-    cy.once('uncaught:exception', () => false);
-    
+    cy.once('uncaught:exception', () => false);   
     cy.clearLocalStorage()
     cy.visit('/')
  })
-
 
   it('Compare total price at the page with price in the invoice', () => {
     
@@ -25,25 +22,18 @@ describe('IndusTrack tests', () => {
     cy.get(sel.invoicesTab).click()   
     cy.get(sel.addNewInvoiceButton).click({force: true})
     cy.InvoicePageLodingVerification()
-    
-    //Search and choose a customer
-    cy.get(sel.selectCustomerInput).should('be.visible').type(Cypress.env('searchCustomer'))
-    cy.selectCustomer(Cypress.env('selectCustomer'))
-    cy.get(sel.proceedButton).click()
+
+    cy.searchAndSelectCustomer(Cypress.env('searchCustomer'), Cypress.env('selectCustomer'))
 
     //Check, that total sum is zero before adding products
     cy.get(sel.totalPage).should('contain', 0)
 
-    //Adding random items to the invoice
-    cy.SelectRandomItem()
-    cy.SelectRandomItem()
+    cy.addRandomItemToInvoice()
+    cy.addRandomItemToInvoice()
 
-    //cy.setDiscount(10)
     cy.invoiceActions('Add discount', 10, '%')
 
-    //Preview the invoice
-    cy.contains(sel.actionsButton).click()
-    cy.contains(sel.previewButton).click()
+    cy.invoiceActions('Preview')
 
     //Compare total price at the page with price in the invoice
     cy.get(sel.totalPage).invoke('text').then((pageTotal) => {
